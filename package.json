@@ -35,6 +35,7 @@
     "dayjs": "^1.11.0",
     "embla-carousel-react": "^7.0.0",
     "next": "12.2.2",
+    "next-auth": "^4.10.3",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },

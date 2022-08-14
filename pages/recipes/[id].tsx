@@ -14,6 +14,7 @@ export default function RecipePage({ recipe }: Props) {
                 {recipe.name}
             </Title>
             <Image width={400} height={400} fit="contain" src={recipe.image} />
+
             <Title order={2}>Instructions:</Title>
             <Text>
                 {recipe.directions}
