@@ -1,7 +1,26 @@
-import { Text, Title } from '@mantine/core';
+import { Image, Text, Title } from '@mantine/core';
 import { Recipe } from '@prisma/client';
 import { GetStaticProps } from 'next';
 import { prisma } from '../../lib/prisma';
+
+interface Props {
+    recipe: Recipe
+}
+export default function RecipePage({ recipe }: Props) {
+    console.log(recipe);
+    return (
+        <div>
+            <Title>
+                {recipe.name}
+            </Title>
+            <Image width={400} height={400} fit="contain" src={recipe.image} />
+            <Title order={2}>Instructions:</Title>
+            <Text>
+                {recipe.directions}
+            </Text>
+        </div>
+    );
+}
 
 export const getStaticPaths = async () => {
     const recipes = await prisma.recipe.findMany();
@@ -24,19 +43,3 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         revalidate: 10,
     };
 };
-interface Props {
-    recipe: Recipe
-}
-export default function RecipePage({ recipe }: Props) {
-    return (
-        <div>
-            <Title>
-                {recipe.name}
-            </Title>
-            <Title order={2}>Instructions:</Title>
-            <Text>
-                {recipe.description}
-            </Text>
-        </div>
-    );
-}
