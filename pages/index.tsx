@@ -16,13 +16,11 @@ interface Props {
   recipes: Recipe[];
 }
 export default function HomePage({ recipes }: Props) {
-  const renderRecipes = () => recipes.map((recipe) =>
-    <Anchor href={`/recipes/${recipe.id}`}>
-      <Title>{recipe.name}</Title>
-    </Anchor>);
-  return (
-    <>
-      {renderRecipes()}
-    </>
-  );
+  const renderRecipes = () =>
+    recipes.map((recipe) => (
+      <Anchor key={recipe.id} href={`/recipes/${recipe.id}`}>
+        <Title>{recipe.name}</Title>
+      </Anchor>
+    ));
+  return <>{renderRecipes()}</>;
 }
