@@ -1,4 +1,4 @@
-import { Anchor, AppShell, Button, Container, Group, Header, Text } from '@mantine/core';
+import { Anchor, AppShell, Button, Container, Group, Header, Text, Title } from '@mantine/core';
 import { NextLink } from '@mantine/next';
 import { useSession, signIn, signOut } from 'next-auth/react';
 
@@ -15,19 +15,22 @@ export default function Layout({ children }: Props) {
         <Header height={60}>
           <Container fluid>
             <Group position="apart" sx={{ height: HEADER_HEIGHT }}>
-              <Anchor component={NextLink} href="/">
-                Recipes
-              </Anchor>
-              {session ? (
-                <Group>
-                  <Text>Welcome, {session.user?.name}</Text>
-                  <Button onClick={() => signOut()} color="red">
-                    Sign out
-                  </Button>
-                </Group>
-              ) : (
-                <Button onClick={() => signIn()}>Sign in</Button>
-              )}
+              <Title order={3}>Good Recipes</Title>
+              <Group>
+                <Anchor component={NextLink} href="/">
+                  Recipes
+                </Anchor>
+                {session ? (
+                  <Group>
+                    <Text>Welcome, {session.user?.name}</Text>
+                    <Button onClick={() => signOut()} color="red">
+                      Sign out
+                    </Button>
+                  </Group>
+                ) : (
+                  <Button onClick={() => signIn()}>Sign in</Button>
+                )}
+              </Group>
             </Group>
           </Container>
         </Header>
