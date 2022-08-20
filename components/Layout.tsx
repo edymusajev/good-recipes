@@ -18,21 +18,22 @@ export default function Layout({ children }: Props) {
               <Anchor href="/" size="xl">
                 Good Recipes
               </Anchor>
-              <Group>
-                <Anchor component={NextLink} href="/">
-                  My Recipes
-                </Anchor>
-                {session ? (
+
+              {session ? (
+                <Group>
+                  <Anchor component={NextLink} href="/">
+                    My Recipes
+                  </Anchor>
                   <Group>
                     <Text>Welcome, {session.user?.name}</Text>
                     <Button onClick={() => signOut()} color="red">
                       Sign out
                     </Button>
                   </Group>
-                ) : (
-                  <Button onClick={() => signIn()}>Sign in</Button>
-                )}
-              </Group>
+                </Group>
+              ) : (
+                <Button onClick={() => signIn()}>Sign in</Button>
+              )}
             </Group>
           </Container>
         </Header>
