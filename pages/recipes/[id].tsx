@@ -1,6 +1,7 @@
 import { Image, Text, Title } from '@mantine/core';
 import { Recipe } from '@prisma/client';
 import { GetStaticProps } from 'next';
+import Head from 'next/head';
 import { prisma } from '../../lib/prisma';
 
 interface Props {
@@ -9,6 +10,9 @@ interface Props {
 export default function RecipePage({ recipe }: Props) {
   return (
     <div>
+      <Head>
+        <title>{recipe.name} - Good Recipes</title>
+      </Head>
       <Title>{recipe.name}</Title>
       <Image width={400} height={400} fit="contain" src={recipe.image} />
 
