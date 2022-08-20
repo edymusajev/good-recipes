@@ -14,5 +14,5 @@ export default NextAuth({
     // ...add more providers here
   ],
   adapter: PrismaAdapter(prisma),
-  secret: process.env.SECRET || '',
+  secret: process.env.NEXTAUTH_SECRET || '',
 });
